@@ -16,10 +16,16 @@ export class AuthService {
     withCredentials: true
   };
 
+  private userName: string;
+
   constructor(
     private httpClient: HttpClient,
     private router: Router
   ) {
+  }
+
+  getUserName() {
+    return this.userName;
   }
 
   signUp(user: User) {
@@ -29,8 +35,8 @@ export class AuthService {
   }
 
   login(userCredentials: UserCredentials) {
-    return this.httpClient.post(this.basicUrl + '/login', userCredentials, this.httpOptions).toPromise()
-      .then(value => console.log(value))
+    return this.httpClient.post<User>(this.basicUrl + '/login', userCredentials, this.httpOptions).toPromise()
+      .then(value => this.userName = value.userName)
       .catch(reason => console.log(reason));
   }
 

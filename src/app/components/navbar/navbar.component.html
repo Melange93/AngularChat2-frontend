@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <button class="navbar-brand" (click)="login()">Navbar</button>
+  <button class="navbar-brand btn bg-dark" (click)="login()">Navbar</button>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -7,13 +7,13 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <button class="nav-link" (click)="login()">Login <span class="sr-only">(current)</span></button>
+        <button class="nav-link btn bg-dark" (click)="login()">Login <span class="sr-only">(current)</span></button>
       </li>
-      <li class="nav-item">
-        <button class="nav-link" (click)="logout()">Logout</button>
+      <li class="nav-item active">
+        <button class="nav-link btn btn-dark" (click)="logout()">Logout</button>
       </li>
-      <li class="nav-item">
-        <button class="nav-link" (click)="signUp()">Sign Up</button>
+      <li class="nav-item active">
+        <button class="nav-link btn bg-dark" (click)="signUp()">Sign Up</button>
       </li>
     </ul>
   </div>
