@@ -1,0 +1,15 @@
+<form>
+  <div class="form-group">
+    <label for="email-signup">Email address</label>
+    <input type="email" class="form-control" id="email-signup" required [(ngModel)]="email" name="email-signup">
+  </div>
+  <div class="form-group">
+    <label for="display-name-signup">Display Name</label>
+    <input type="text" class="form-control" id="display-name-signup" required [(ngModel)]="displayName" name="display-name-signup">
+  </div>
+  <div class="form-group">
+    <label for="password-signup">Password</label>
+    <input type="password" class="form-control" id="password-signup" required [(ngModel)]="password" name="password-signup">
+  </div>
+  <button type="submit" class="btn btn-primary" (click)="singUp()" (keydown.enter)="singUp()">Submit</button>
+</form>
