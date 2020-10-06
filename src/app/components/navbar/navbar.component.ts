@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit, Output} from '@angular/core';
 import {Router} from '@angular/router';
 import {AuthService} from '../../services/auth.service';
 
@@ -9,6 +9,8 @@ import {AuthService} from '../../services/auth.service';
 })
 export class NavbarComponent implements OnInit {
 
+  @Input() userName: string;
+
   constructor(
     private router: Router,
     private authService: AuthService
@@ -16,6 +18,7 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit() {
+
   }
 
   login() {

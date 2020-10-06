@@ -9,13 +9,15 @@ import {appRoutes} from './routes';
 import {FormsModule} from '@angular/forms';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { ChatComponent } from './components/chat/chat.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SignUpComponent,
     LoginComponent,
-    NavbarComponent
+    NavbarComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,

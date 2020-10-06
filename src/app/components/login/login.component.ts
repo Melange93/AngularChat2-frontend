@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../../services/auth.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,6 +13,7 @@ export class LoginComponent implements OnInit {
   private password: string;
 
   constructor(
+    private router: Router,
     private authService: AuthService
   ) { }
 
@@ -24,7 +26,7 @@ export class LoginComponent implements OnInit {
       password: this.password
     };
 
-    this.authService.login(userCredentials);
+    this.authService.login(userCredentials).then(value => this.router.navigate(['/chat']));
   }
 
 }
