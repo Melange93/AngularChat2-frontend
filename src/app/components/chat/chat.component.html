@@ -1,7 +1,7 @@
 <div id="chat">
   <div id="chat-window">
     <div id="output" *ngFor="let chatMessage of webSocketService.chatMessages">
-      <p><strong>{{chatMessage.userName}}: </strong>{{chatMessage.message}}</p>
+      <p><strong>{{chatMessage.user.userName}}: </strong>{{chatMessage.message}}</p>
     </div>
     <div id="feedback"></div>
   </div>

@@ -41,11 +41,7 @@ export class AuthService {
   }
 
   logout() {
-    const user = {
-      userName: 'Logout',
-      password: 'logout'
-    };
-    return this.httpClient.post(this.basicUrl + '/logout-user', user, this.httpOptions).toPromise()
+    return this.httpClient.post(this.basicUrl + '/logout', this.httpOptions).toPromise()
       .then(value => this.router.navigate(['/login']))
       .catch(reason => console.log(reason));
   }

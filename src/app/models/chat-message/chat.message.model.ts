@@ -1,11 +1,13 @@
+import {User} from '../user/user.model';
+
 export class ChatMessage {
-  userName: string;
+  user: User;
   message: string;
-  timeStamp: string;
+  timeStamp: Date;
 
 
-  constructor(userName: string, message: string, timeStamp: string) {
-    this.userName = userName;
+  constructor(user: User, message: string, timeStamp: Date) {
+    this.user = user;
     this.message = message;
     this.timeStamp = timeStamp;
   }

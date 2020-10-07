@@ -24,6 +24,7 @@ export class SignUpComponent implements OnInit {
 
   singUp() {
     const user = {
+      id: null,
       email: this.email,
       userName: this.userName,
       password: this.password
