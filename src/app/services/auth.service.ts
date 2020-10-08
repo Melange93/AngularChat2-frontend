@@ -4,6 +4,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {User} from '../models/user/user.model';
 import {UserCredentials} from '../models/usercredentials/usercredentials.model';
 import {Router} from '@angular/router';
+import {UserLoginService} from './user-login.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,33 +17,40 @@ export class AuthService {
     withCredentials: true
   };
 
-  private userName: string;
+  private loggedUser: User;
 
   constructor(
     private httpClient: HttpClient,
-    private router: Router
+    private router: Router,
+    private userLoginService: UserLoginService
   ) {
   }
 
-  getUserName() {
-    return this.userName;
+  getUser() {
+    return this.loggedUser;
   }
 
   signUp(user: User) {
     return this.httpClient.post<User>(this.basicUrl + '/newuser', user, this.httpOptions).toPromise()
-      .then(value => console.log(value))
+      .then(value => value)
       .catch(reason => console.log(reason));
   }
 
   login(userCredentials: UserCredentials) {
     return this.httpClient.post<User>(this.basicUrl + '/login', userCredentials, this.httpOptions).toPromise()
-      .then(value => this.userName = value.userName)
+      .then(value => {
+        this.loggedUser = value;
+        this.userLoginService.userLoginChanged(this.loggedUser);
+      })
       .catch(reason => console.log(reason));
   }
 
   logout() {
-    return this.httpClient.post(this.basicUrl + '/logout', this.httpOptions).toPromise()
-      .then(value => this.router.navigate(['/login']))
+    return this.httpClient.post(this.basicUrl + '/logout-user', {}, this.httpOptions).toPromise()
+      .then(value => {
+        this.loggedUser = undefined;
+        this.userLoginService.userLoginChanged(this.loggedUser);
+      })
       .catch(reason => console.log(reason));
   }
 
