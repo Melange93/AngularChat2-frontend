@@ -5,10 +5,8 @@
     </div>
     <div id="feedback"></div>
   </div>
-  <input id="message" type="text" placeholder="Message" [(ngModel)]="message" (keydown.enter)="sendMessage()"/>
-  <button id="send"
-          (click)="sendMessage()"
-  >
+  <input id="message2" type="text" class="form-control" placeholder="Message" [(ngModel)]="message" (keydown.enter)="sendMessage()"/>
+  <button class="btn btn-primary btn-lg btn-block" (click)="sendMessage()">
     Send
   </button>
 </div>
