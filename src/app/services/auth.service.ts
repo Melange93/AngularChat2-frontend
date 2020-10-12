@@ -53,5 +53,4 @@ export class AuthService {
       })
       .catch(reason => console.log(reason));
   }
-
 }
