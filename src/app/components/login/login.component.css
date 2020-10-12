@@ -1,4 +1,4 @@
-.form-signin {
+.form-login {
   width: 100%;
   max-width: 420px;
   padding: 15px;
@@ -19,5 +19,11 @@ button {
 button:hover {
   background-color: #6db8b8;
   border-color: #65a5a5;
+  color: black;
+}
+
+button:active {
+  background-color: #65a5a5;
+  border-color: #588f8f;
   color: black;
 }
