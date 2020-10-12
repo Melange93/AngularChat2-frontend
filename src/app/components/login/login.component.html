@@ -1,11 +1,21 @@
-<form>
-  <div class="form-group">
-    <label for="user-name-login">User Name</label>
-    <input [(ngModel)]="userName" name="user-name-login" type="email" class="form-control" id="user-name-login" required>
+<form class="form-signin">
+  <div class="text-center mb-4">
+    <img class="mb-4" src="https://www.clker.com/cliparts/v/Z/v/9/c/F/blue-cat.svg" alt="" width="72" height="112">
+    <h1 class="h3 mb-3 font-weight-normal">Blue Cat Chat</h1>
   </div>
-  <div class="form-group">
+  <div class="form-label-group">
+    <label for="user-name-login">User name</label>
+    <input type="text" id="user-name-login" name="user-name-login" [(ngModel)]="userName" class="form-control"
+           placeholder="User name" required autofocus>
+  </div>
+
+  <div class="form-label-group">
     <label for="password-login">Password</label>
-    <input [(ngModel)]="password" name="password-login" type="password" class="form-control" id="password-login" required>
+    <input type="password" id="password-login" [(ngModel)]="password" name="password-login" class="form-control"
+           placeholder="Password" required>
   </div>
-  <button type="submit" class="btn btn-primary" (click)="login()" (keydown.enter)="login()">Submit</button>
+  <div class="form-label-group">
+    <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="login()" (keydown.enter)="login()">Log in
+    </button>
+  </div>
 </form>
