@@ -1,0 +1,7 @@
+.nav-item, .navbar-brand {
+  color: black;
+}
+
+nav {
+  border-bottom: 1px solid black;
+}
