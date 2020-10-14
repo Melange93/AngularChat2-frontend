@@ -5,6 +5,7 @@ import {User} from '../models/user/user.model';
 import {UserCredentials} from '../models/usercredentials/usercredentials.model';
 import {Router} from '@angular/router';
 import {UserLoginService} from './user-login.service';
+import {ChatRoom} from '../models/chatroom.model';
 
 @Injectable({
   providedIn: 'root'
@@ -39,6 +40,7 @@ export class AuthService {
   login(userCredentials: UserCredentials) {
     return this.httpClient.post<User>(this.basicUrl + '/login', userCredentials, this.httpOptions).toPromise()
       .then(value => {
+        console.log(value);
         this.loggedUser = value;
         this.userLoginService.userLoginChanged(this.loggedUser);
       })
@@ -50,6 +52,22 @@ export class AuthService {
       .then(value => {
         this.loggedUser = undefined;
         this.userLoginService.userLoginChanged(this.loggedUser);
+      })
+      .catch(reason => console.log(reason));
+  }
+
+  refreshUserMemberRooms() {
+    this.httpClient.post<ChatRoom[]>(this.basicUrl + '/getMemberRooms', this.loggedUser, this.httpOptions).toPromise()
+      .then(value => {
+        this.loggedUser.member = value;
+      })
+      .catch(reason => console.log(reason));
+  }
+
+  refreshUserCreatedRooms() {
+    this.httpClient.post<ChatRoom[]>(this.basicUrl + '/getCreatedRooms', this.loggedUser, this.httpOptions).toPromise()
+      .then(value => {
+        this.loggedUser.createdRoom = value;
       })
       .catch(reason => console.log(reason));
   }

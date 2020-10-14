@@ -7,3 +7,17 @@
     <h2 class="h3 mb-3 font-weight-normal">{{loggedUser.email}}</h2>
   </div>
 </div>
+
+<div>
+  <h2>Your Chat Rooms</h2>
+  <ul *ngFor="let createdRoom of loggedUser.createdRoom ">
+    <li>{{ createdRoom.chatRoomName }}</li>
+  </ul>
+</div>
+
+<div>
+  <h2>Member</h2>
+  <ul *ngFor="let memberChatRoom of loggedUser.member ">
+    <li>{{ memberChatRoom.chatRoomName }}</li>
+  </ul>
+</div>

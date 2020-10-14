@@ -27,6 +27,6 @@ export class ChatroomcrationformComponent implements OnInit {
       this.chatroomService.saveNewChatRoom(this.chatRoomName, this.loggedUser);
     }
 
+    this.chatRoomName = '';
   }
-
 }

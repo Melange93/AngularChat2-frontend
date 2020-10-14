@@ -16,6 +16,8 @@ export class UserProfileComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.authService.refreshUserMemberRooms();
+    this.authService.refreshUserCreatedRooms();
     this.loggedUser = this.authService.getUser();
   }
 }

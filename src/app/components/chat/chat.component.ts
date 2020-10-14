@@ -19,10 +19,12 @@ export class ChatComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    console.log('Chat component init');
     this.webSocketService.openWebSocket();
   }
 
   ngOnDestroy(): void {
+    console.log('Chat component destroy');
     this.webSocketService.closeWebSocket();
   }
 
