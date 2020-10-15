@@ -8,7 +8,7 @@ import {ChatroomcrationformComponent} from './components/chatroomcrationform/cha
 export const appRoutes: Routes = [
   {path: 'signup', component: SignUpComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'chat', component: ChatComponent},
+  {path: 'chat/:roomName', component: ChatComponent},
   {path: 'profile', component: UserProfileComponent},
   {path: 'chatroomform', component: ChatroomcrationformComponent},
   {path: '', redirectTo: '/login', pathMatch: 'full'},

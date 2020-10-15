@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
       password: this.password
     };
 
-    this.authService.login(userCredentials).then(value => this.router.navigate(['/chat']));
+    this.authService.login(userCredentials).then(value => this.router.navigate(['profile']));
   }
 
 }

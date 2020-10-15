@@ -40,7 +40,6 @@ export class AuthService {
   login(userCredentials: UserCredentials) {
     return this.httpClient.post<User>(this.basicUrl + '/login', userCredentials, this.httpOptions).toPromise()
       .then(value => {
-        console.log(value);
         this.loggedUser = value;
         this.userLoginService.userLoginChanged(this.loggedUser);
       })

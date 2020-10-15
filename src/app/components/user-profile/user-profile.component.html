@@ -38,13 +38,17 @@
 <div>
   <h2>Your Chat Rooms</h2>
   <ul *ngFor="let createdRoom of loggedUser.createdRoom ">
-    <li>{{ createdRoom.chatRoomName }}</li>
+    <li>{{ createdRoom.chatRoomName }}
+      <button class="btn btn-info" (click)="loginChatRoom(createdRoom)">Chat</button>
+    </li>
   </ul>
 </div>
 
 <div>
   <h2>Member</h2>
   <ul *ngFor="let memberChatRoom of loggedUser.member ">
-    <li>{{ memberChatRoom.chatRoomName }}</li>
+    <li>{{ memberChatRoom.chatRoomName }}
+      <button class="btn btn-info" (click)="loginChatRoom(memberChatRoom)">Chat</button>
+    </li>
   </ul>
 </div>

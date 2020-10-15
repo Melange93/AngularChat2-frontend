@@ -3,6 +3,8 @@ import {User} from '../../models/user/user.model';
 import {AuthService} from '../../services/auth.service';
 import {ChatRoom} from '../../models/chatroom.model';
 import {ChatroomService} from '../../services/chatroom.service';
+import {Router} from '@angular/router';
+import {ChatRoomLoginService} from '../../services/chatroom-login.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -17,7 +19,9 @@ export class UserProfileComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private chatRoomService: ChatroomService
+    private chatRoomService: ChatroomService,
+    private chatRoomLoginService: ChatRoomLoginService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -27,7 +31,11 @@ export class UserProfileComponent implements OnInit {
   }
 
   addNewRoomMember() {
-    console.log(this.chatRoomId);
     this.chatRoomService.addNewMember(this.chatRoomId, this.addNewUserName);
+  }
+
+  loginChatRoom(loginChatRoomFromHtml: ChatRoom) {
+    this.chatRoomLoginService.setChatRoomLogin(loginChatRoomFromHtml);
+    this.router.navigate(['/chat', loginChatRoomFromHtml.chatRoomName]);
   }
 }

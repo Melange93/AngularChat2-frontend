@@ -2,6 +2,9 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {AuthService} from '../../services/auth.service';
 import {WebSocketService} from '../../services/web-socket.service';
 import {ChatMessage} from '../../models/chat-message/chat.message.model';
+import {Subscription} from 'rxjs';
+import {ChatRoom} from '../../models/chatroom.model';
+import {ChatRoomLoginService} from '../../services/chatroom-login.service';
 
 @Component({
   selector: 'app-chat',
@@ -11,16 +14,19 @@ import {ChatMessage} from '../../models/chat-message/chat.message.model';
 export class ChatComponent implements OnInit, OnDestroy {
 
   message: string;
+  private chatRoomLogin: ChatRoom;
 
   constructor(
     private authService: AuthService,
-    private webSocketService: WebSocketService
+    private webSocketService: WebSocketService,
+    private chatRoomLoginService: ChatRoomLoginService
   ) {
   }
 
   ngOnInit() {
     console.log('Chat component init');
     this.webSocketService.openWebSocket();
+    this.chatRoomLogin = this.chatRoomLoginService.getChatRoomLogin();
   }
 
   ngOnDestroy(): void {
@@ -32,7 +38,8 @@ export class ChatComponent implements OnInit, OnDestroy {
     const chatMessage = new ChatMessage(
       this.authService.getUser(),
       this.message,
-      new Date()
+      new Date(),
+      this.chatRoomLogin
     );
 
     this.webSocketService.sendMessage(chatMessage);
