@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {environment} from '../../environments/environment';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {User} from '../models/user/user.model';
@@ -17,7 +17,8 @@ export class ChatroomService {
   };
 
   constructor(private httpClient: HttpClient
-  ) { }
+  ) {
+  }
 
 
   saveNewChatRoom(roomName: string, user: User) {
@@ -30,6 +31,13 @@ export class ChatroomService {
     };
 
     this.httpClient.post<ChatRoom>(this.basicUrl + '/addchatroom', newChatRoom, this.httpOptions).toPromise()
+      .then(value => console.log(value))
+      .catch(reason => console.log(reason));
+  }
+
+  addNewMember(chatRoomId: number, userName: string) {
+    console.log(chatRoomId)
+    this.httpClient.post(this.basicUrl + '/addnewmember', {chatRoomId, userName}, this.httpOptions).toPromise()
       .then(value => console.log(value))
       .catch(reason => console.log(reason));
   }

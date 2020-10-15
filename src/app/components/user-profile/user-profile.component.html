@@ -1,4 +1,4 @@
-<div id="user-profile">
+<div id="user-profile" class="form-login">
   <div class="text-center mb-4">
     <img class="mb-4" src="https://www.svgrepo.com/show/275536/cat.svg" alt="" width="112" height="112">
     <h1 class="h3 mb-3 font-weight-normal">{{loggedUser.userName}}</h1>
@@ -7,6 +7,33 @@
     <h2 class="h3 mb-3 font-weight-normal">{{loggedUser.email}}</h2>
   </div>
 </div>
+
+<form>
+  <h4>Add new member to a chat room</h4>
+  <div class="form-group col-md-4">
+    <label for="inputChatRoom">Chat room</label>
+    <select [(ngModel)]="chatRoomId" id="inputChatRoom" class="form-control" name="inputChatRoom">
+      <option
+        [value]="createdRoom.id"
+        *ngFor="let createdRoom of loggedUser.createdRoom"
+      >
+        {{createdRoom.chatRoomName}}
+      </option>
+
+      <option
+        [value]="memberChatRoom.chatRoomName"
+        *ngFor="let memberChatRoom of loggedUser.member"
+      >
+        {{memberChatRoom.chatRoomName}}
+      </option>
+    </select>
+  </div>
+  <div class="form-group col-md-4">
+    <label for="inputUserName">User Name</label>
+    <input type="text" class="form-control" id="inputUserName" name="inputUserName" [(ngModel)]="addNewUserName">
+  </div>
+  <button type="submit" class="btn btn-info" (click)="addNewRoomMember()">Add new member</button>
+</form>
 
 <div>
   <h2>Your Chat Rooms</h2>
