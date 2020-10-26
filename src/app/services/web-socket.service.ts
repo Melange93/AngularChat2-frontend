@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {ChatMessage} from '../models/chat-message/chat.message.model';
 import {environment} from '../../environments/environment';
+import {ChatRoomLoginService} from './chatroom-login.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,9 +11,13 @@ export class WebSocketService {
   webSocketUrl = environment.backendWebSocketUrl;
   webSocket: WebSocket;
   chatMessages: ChatMessage[] = [];
+  chatRoomName: string;
 
-  constructor() {
-    this.webSocket = new WebSocket(this.webSocketUrl + '/chat');
+  constructor(
+    private chatRoomLoginService: ChatRoomLoginService
+  ) {
+    this.chatRoomName = chatRoomLoginService.getChatRoomLogin().chatRoomName;
+    this.webSocket = new WebSocket(this.webSocketUrl + '/chat/' + this.chatRoomName);
   }
 
   openWebSocket() {

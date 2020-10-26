@@ -10,6 +10,8 @@ import {FormsModule} from '@angular/forms';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ChatComponent } from './components/chat/chat.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { ChatroomcrationformComponent } from './components/chatroomcrationform/chatroomcrationform.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { ChatComponent } from './components/chat/chat.component';
     SignUpComponent,
     LoginComponent,
     NavbarComponent,
-    ChatComponent
+    ChatComponent,
+    UserProfileComponent,
+    ChatroomcrationformComponent
   ],
   imports: [
     BrowserModule,

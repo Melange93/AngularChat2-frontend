@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../services/auth.service';
 import {Route, Router} from '@angular/router';
+import {ChatRoom} from '../../models/chatroom.model';
 
 @Component({
   selector: 'app-sign-up',
@@ -27,7 +28,9 @@ export class SignUpComponent implements OnInit {
       id: null,
       email: this.email,
       userName: this.userName,
-      password: this.password
+      password: this.password,
+      createdRoom: null,
+      member: null
     };
 
     this.authService.signUp(user).then(value => this.router.navigate(['/login']));

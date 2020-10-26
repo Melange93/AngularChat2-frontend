@@ -1,0 +1,14 @@
+<form class="form-signup">
+  <div class="text-center mb-4">
+    <img class="mb-4" src="https://www.clker.com/cliparts/v/Z/v/9/c/F/blue-cat.svg" alt="" width="72" height="112">
+    <h1 class="h3 mb-3 font-weight-normal">Crate New Chat Room</h1>
+  </div>
+
+  <div class="form-group">
+    <label for="chatroom-name">Chat Room Name</label>
+    <input type="email" class="form-control" id="chatroom-name" [(ngModel)]="chatRoomName" name="chatroom-name"
+           placeholder="Chat Room Name" required autofocus>
+  </div>
+  <button type="submit" class="btn btn-lg btn-primary btn-block" (click)="createNewChatRoom()">Create</button>
+</form>
+
