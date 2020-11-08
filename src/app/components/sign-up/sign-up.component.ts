@@ -20,10 +20,10 @@ export class SignUpComponent implements OnInit {
   ) {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
   }
 
-  singUp() {
+  singUp(): void {
     const user = {
       id: null,
       email: this.email,

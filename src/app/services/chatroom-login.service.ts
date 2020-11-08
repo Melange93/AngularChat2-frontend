@@ -11,11 +11,11 @@ export class ChatRoomLoginService {
   constructor() {
   }
 
-  public setChatRoomLogin(val: ChatRoom) {
+  public setChatRoomLogin(val: ChatRoom): void {
     this.chatRoomLogin = val;
   }
 
-  public getChatRoomLogin() {
+  public getChatRoomLogin(): ChatRoom {
     return this.chatRoomLogin;
   }
 }

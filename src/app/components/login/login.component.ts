@@ -17,10 +17,10 @@ export class LoginComponent implements OnInit {
     private authService: AuthService
   ) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
   }
 
-  login() {
+  login(): void {
     const userCredentials = {
       userName: this.userName,
       password: this.password

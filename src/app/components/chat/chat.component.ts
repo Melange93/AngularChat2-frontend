@@ -23,7 +23,7 @@ export class ChatComponent implements OnInit, OnDestroy {
   ) {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     console.log('Chat component init');
     this.webSocketService.openWebSocket();
     this.chatRoomLogin = this.chatRoomLoginService.getChatRoomLogin();
@@ -34,7 +34,7 @@ export class ChatComponent implements OnInit, OnDestroy {
     this.webSocketService.closeWebSocket();
   }
 
-  sendMessage() {
+  sendMessage(): void {
     const chatMessage = new ChatMessage(
       this.authService.getUser(),
       this.message,

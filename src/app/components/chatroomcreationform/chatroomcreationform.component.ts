@@ -5,10 +5,10 @@ import {ChatroomService} from '../../services/chatroom.service';
 
 @Component({
   selector: 'app-chatroomcrationform',
-  templateUrl: './chatroomcrationform.component.html',
-  styleUrls: ['./chatroomcrationform.component.css']
+  templateUrl: './chatroomcreationform.component.html',
+  styleUrls: ['./chatroomcreationform.component.css']
 })
-export class ChatroomcrationformComponent implements OnInit {
+export class ChatroomcreationformComponent implements OnInit {
 
   private chatRoomName: string;
   private loggedUser: User;
@@ -18,11 +18,11 @@ export class ChatroomcrationformComponent implements OnInit {
     private chatroomService: ChatroomService
   ) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.loggedUser = this.authService.getUser();
   }
 
-  createNewChatRoom() {
+  createNewChatRoom(): void {
     if (this.chatRoomName !== '') {
       this.chatroomService.saveNewChatRoom(this.chatRoomName, this.loggedUser);
     }

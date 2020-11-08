@@ -36,7 +36,6 @@ export class ChatroomService {
   }
 
   addNewMember(chatRoomId: number, userName: string) {
-    console.log(chatRoomId)
     this.httpClient.post(this.basicUrl + '/addnewmember', {chatRoomId, userName}, this.httpOptions).toPromise()
       .then(value => console.log(value))
       .catch(reason => console.log(reason));

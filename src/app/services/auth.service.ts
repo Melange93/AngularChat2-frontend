@@ -27,18 +27,18 @@ export class AuthService {
   ) {
   }
 
-  getUser() {
+  getUser(): User {
     return this.loggedUser;
   }
 
-  signUp(user: User) {
+  signUp(user: User): Promise<User | void> {
     return this.httpClient.post<User>(this.basicUrl + '/newuser', user, this.httpOptions).toPromise()
       .then(value => value)
       .catch(reason => console.log(reason));
   }
 
   login(userCredentials: UserCredentials) {
-    return this.httpClient.post<User>(this.basicUrl + '/login', userCredentials, this.httpOptions).toPromise()
+    this.httpClient.post<User>(this.basicUrl + '/login', userCredentials, this.httpOptions).toPromise()
       .then(value => {
         this.loggedUser = value;
         this.userLoginService.userLoginChanged(this.loggedUser);
@@ -47,7 +47,7 @@ export class AuthService {
   }
 
   logout() {
-    return this.httpClient.post(this.basicUrl + '/logout-user', {}, this.httpOptions).toPromise()
+    this.httpClient.post(this.basicUrl + '/logout-user', {}, this.httpOptions).toPromise()
       .then(value => {
         this.loggedUser = undefined;
         this.userLoginService.userLoginChanged(this.loggedUser);
