@@ -4,3 +4,11 @@
   padding: 15px;
   margin: 15px auto auto;
 }
+
+.mirror {
+  transform: scaleX(-1);
+}
+
+img {
+  padding: 5px;
+}
