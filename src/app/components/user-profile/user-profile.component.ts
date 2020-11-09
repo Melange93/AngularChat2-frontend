@@ -32,6 +32,8 @@ export class UserProfileComponent implements OnInit {
 
   addNewRoomMember(): void {
     this.chatRoomService.addNewMember(this.chatRoomId, this.addNewUserName);
+    this.chatRoomId = null;
+    this.addNewUserName = '';
   }
 
   loginChatRoom(loginChatRoomFromHtml: ChatRoom): void {

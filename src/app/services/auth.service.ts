@@ -58,18 +58,18 @@ export class AuthService {
   }
 
   refreshUserMemberRooms() {
-    this.httpClient.post<ChatRoom[]>(this.basicUrl + '/getMemberRooms', this.loggedUser, this.httpOptions).toPromise()
+    this.httpClient.post<ChatRoom[]>(this.basicUrl + '/getmemberrooms', this.loggedUser, this.httpOptions).toPromise()
       .then(value => {
         this.loggedUser.member = value;
       })
-      .catch(reason => console.log(reason));
+      .catch(reason => alert('Something went wrong: failed to load member rooms'));
   }
 
   refreshUserCreatedRooms() {
-    this.httpClient.post<ChatRoom[]>(this.basicUrl + '/getCreatedRooms', this.loggedUser, this.httpOptions).toPromise()
+    this.httpClient.post<ChatRoom[]>(this.basicUrl + '/getcreatedrooms', this.loggedUser, this.httpOptions).toPromise()
       .then(value => {
         this.loggedUser.createdRoom = value;
       })
-      .catch(reason => console.log(reason));
+      .catch(reason => alert('Something went wrong: failed to load user created rooms'));
   }
 }
