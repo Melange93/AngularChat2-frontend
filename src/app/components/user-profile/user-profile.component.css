@@ -4,3 +4,10 @@
   padding: 15px;
   margin: 15px auto auto;
 }
+
+.user-rooms, .new-chat-room-member-form {
+  width: 100%;
+  max-width: 420px;
+  padding: 15px;
+  margin: auto;
+}
