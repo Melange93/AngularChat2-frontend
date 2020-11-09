@@ -1,5 +1,4 @@
-<h2>{{this.chatRoomLogin.chatRoomName}}</h2>
-<h2>{{this.chatRoomLogin.id}}</h2>
+<h2 class="chat-title">{{this.chatRoomLogin.chatRoomName | titlecase}}</h2>
 <div id="chat">
   <div id="chat-window">
     <div id="output" *ngFor="let chatMessage of webSocketService.chatMessages">
@@ -8,7 +7,7 @@
     <div id="feedback"></div>
   </div>
   <input id="message2" type="text" class="form-control" placeholder="Message" [(ngModel)]="message" (keydown.enter)="sendMessage()"/>
-  <button class="btn btn-primary btn-lg btn-block" (click)="sendMessage()">
+  <button class="btn btn-info btn-lg btn-block" (click)="sendMessage()">
     Send
   </button>
 </div>

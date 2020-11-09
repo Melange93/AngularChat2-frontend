@@ -1,4 +1,4 @@
-import {Injectable, Output} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {environment} from '../../environments/environment';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {User} from '../models/user/user.model';
@@ -31,43 +31,45 @@ export class AuthService {
     return this.loggedUser;
   }
 
-  signUp(user: User): Promise<User | void> {
-    return this.httpClient.post<User>(this.basicUrl + '/newuser', user, this.httpOptions).toPromise()
-      .then(value => value)
-      .catch(reason => console.log(reason));
+  signUp(user: User) {
+    this.httpClient.post<User>(this.basicUrl + '/newuser', user, this.httpOptions).toPromise()
+      .then(() => this.router.navigate(['/login']))
+      .catch(reason => alert(reason.error.message));
   }
 
   login(userCredentials: UserCredentials) {
-    return this.httpClient.post<User>(this.basicUrl + '/login', userCredentials, this.httpOptions).toPromise()
+    this.httpClient.post<User>(this.basicUrl + '/login', userCredentials, this.httpOptions).toPromise()
       .then(value => {
         this.loggedUser = value;
         this.userLoginService.userLoginChanged(this.loggedUser);
+        this.router.navigate(['profile']);
       })
-      .catch(reason => console.log(reason));
+      .catch(reason => alert(reason.error.message));
   }
 
   logout() {
-    return this.httpClient.post(this.basicUrl + '/logout-user', {}, this.httpOptions).toPromise()
-      .then(value => {
+    this.httpClient.post(this.basicUrl + '/logout-user', {}, this.httpOptions).toPromise()
+      .then(() => {
         this.loggedUser = undefined;
         this.userLoginService.userLoginChanged(this.loggedUser);
+        this.router.navigate(['/login']);
       })
       .catch(reason => console.log(reason));
   }
 
   refreshUserMemberRooms() {
-    this.httpClient.post<ChatRoom[]>(this.basicUrl + '/getMemberRooms', this.loggedUser, this.httpOptions).toPromise()
+    this.httpClient.post<ChatRoom[]>(this.basicUrl + '/getmemberrooms', this.loggedUser, this.httpOptions).toPromise()
       .then(value => {
         this.loggedUser.member = value;
       })
-      .catch(reason => console.log(reason));
+      .catch(reason => alert('Something went wrong: failed to load member rooms'));
   }
 
   refreshUserCreatedRooms() {
-    this.httpClient.post<ChatRoom[]>(this.basicUrl + '/getCreatedRooms', this.loggedUser, this.httpOptions).toPromise()
+    this.httpClient.post<ChatRoom[]>(this.basicUrl + '/getcreatedrooms', this.loggedUser, this.httpOptions).toPromise()
       .then(value => {
         this.loggedUser.createdRoom = value;
       })
-      .catch(reason => console.log(reason));
+      .catch(reason => alert('Something went wrong: failed to load user created rooms'));
   }
 }

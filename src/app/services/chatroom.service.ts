@@ -4,6 +4,8 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {User} from '../models/user/user.model';
 import {ChatMessage} from '../models/chat-message/chat.message.model';
 import {ChatRoom} from '../models/chatroom.model';
+import {Router} from '@angular/router';
+import {NewRoomMember} from '../models/newroommember.model';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +18,9 @@ export class ChatroomService {
     withCredentials: true
   };
 
-  constructor(private httpClient: HttpClient
+  constructor(
+    private httpClient: HttpClient,
+    private router: Router
   ) {
   }
 
@@ -31,13 +35,13 @@ export class ChatroomService {
     };
 
     this.httpClient.post<ChatRoom>(this.basicUrl + '/addchatroom', newChatRoom, this.httpOptions).toPromise()
-      .then(value => console.log(value))
-      .catch(reason => console.log(reason));
+      .then(value => this.router.navigate(['/profile']))
+      .catch(reason => alert('Failed to create the chat room'));
   }
 
   addNewMember(chatRoomId: number, userName: string) {
-    this.httpClient.post(this.basicUrl + '/addnewmember', {chatRoomId, userName}, this.httpOptions).toPromise()
-      .then(value => console.log(value))
-      .catch(reason => console.log(reason));
+    this.httpClient.post<NewRoomMember>(this.basicUrl + '/addnewmember', {chatRoomId, userName}, this.httpOptions).toPromise()
+      .then(value => alert('Successfully added ' + value.newMemberName + ' to ' + value.chatRoomName + '.'))
+      .catch(reason => alert('Failed to add ' + userName + ' to the chat room'));
   }
 }
