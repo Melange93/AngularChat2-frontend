@@ -36,12 +36,12 @@ export class ChatroomService {
 
     this.httpClient.post<ChatRoom>(this.basicUrl + '/addchatroom', newChatRoom, this.httpOptions).toPromise()
       .then(value => this.router.navigate(['/profile']))
-      .catch(reason => alert(reason.error.message));
+      .catch(reason => alert('Failed to create the chat room'));
   }
 
   addNewMember(chatRoomId: number, userName: string) {
     this.httpClient.post<NewRoomMember>(this.basicUrl + '/addnewmember', {chatRoomId, userName}, this.httpOptions).toPromise()
       .then(value => alert('Successfully added ' + value.newMemberName + ' to ' + value.chatRoomName + '.'))
-      .catch(reason => console.log(reason));
+      .catch(reason => alert('Failed to add ' + userName + ' to the chat room'));
   }
 }
