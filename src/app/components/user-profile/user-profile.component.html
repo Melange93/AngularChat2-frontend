@@ -1,17 +1,17 @@
 <div id="user-profile" class="form-login">
   <div class="text-center mb-4">
     <img class="mb-4" src="https://www.svgrepo.com/show/275536/cat.svg" alt="" width="112" height="112">
-    <h1 class="h3 mb-3 font-weight-normal">{{loggedUser.userName}}</h1>
+    <h1 class="h4 mb-3 font-weight-normal">Username: {{loggedUser.userName}}</h1>
   </div>
   <div class="text-center mb-4">
-    <h2 class="h3 mb-3 font-weight-normal">{{loggedUser.email}}</h2>
+    <h2 class="h4 mb-3 font-weight-normal">Email: {{loggedUser.email}}</h2>
   </div>
 </div>
 
-<form>
+<form class="new-chat-room-member-form">
   <h4>Add new member to a chat room</h4>
-  <div class="form-group col-md-4">
-    <label for="inputChatRoom">Chat room</label>
+  <div class="form-group">
+    <label for="inputChatRoom">Select a chat room</label>
     <select [(ngModel)]="chatRoomId" id="inputChatRoom" class="form-control" name="inputChatRoom">
       <option
         [value]="createdRoom.id"
@@ -28,27 +28,27 @@
       </option>
     </select>
   </div>
-  <div class="form-group col-md-4">
-    <label for="inputUserName">User Name</label>
+  <div class="form-group" *ngIf="chatRoomId">
+    <label for="inputUserName">Enter a username</label>
     <input type="text" class="form-control" id="inputUserName" name="inputUserName" [(ngModel)]="addNewUserName">
   </div>
-  <button type="submit" class="btn btn-info" (click)="addNewRoomMember()">Add new member</button>
+  <button *ngIf="chatRoomId" type="submit" class="btn btn-lg btn-info btn-block" (click)="addNewRoomMember()">Add new member to the chat room</button>
 </form>
 
-<div>
-  <h2>Your Chat Rooms</h2>
-  <ul *ngFor="let createdRoom of loggedUser.createdRoom ">
-    <li>{{ createdRoom.chatRoomName }}
-      <button class="btn btn-info" (click)="loginChatRoom(createdRoom)">Chat</button>
+<div class="user-rooms">
+  <h4>Your Chat Rooms</h4>
+  <ul *ngFor="let createdRoom of loggedUser.createdRoom " class="list-group">
+    <li class="list-group-item">{{ createdRoom.chatRoomName }}
+      <button class="btn btn-info float-right" (click)="loginChatRoom(createdRoom)">Enter room</button>
     </li>
   </ul>
 </div>
 
-<div>
-  <h2>Member</h2>
-  <ul *ngFor="let memberChatRoom of loggedUser.member ">
-    <li>{{ memberChatRoom.chatRoomName }}
-      <button class="btn btn-info" (click)="loginChatRoom(memberChatRoom)">Chat</button>
+<div class="user-rooms">
+  <h4>Member</h4>
+  <ul *ngFor="let memberChatRoom of loggedUser.member " class="list-group">
+    <li class="list-group-item">{{ memberChatRoom.chatRoomName }}
+      <button class="btn btn-info float-right" (click)="loginChatRoom(memberChatRoom)">Enter room</button>
     </li>
   </ul>
 </div>

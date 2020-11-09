@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-lg navbar-light">
+<nav class="navbar navbar-expand navbar-light">
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-  <a class="navbar-brand" [routerLink]="'login'">
+  <a class="navbar-brand" disabled="disabled">
     <img
       src="https://images.vexels.com/media/users/3/144878/isolated/preview/7f57343aa5daa8bbf92f6b6779a1af51-cat-sitting-silhouette-by-vexels.png"
       width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
@@ -22,9 +22,6 @@
       </li>
       <li class="nav-item active" *ngIf="loggedUser">
         <a class="nav-link" [routerLink]="'chatroomform'">New chat room</a>
-      </li>
-      <li class="nav-item active" *ngIf="loggedUser">
-        <a class="nav-link" [routerLink]="'chat'">Chat</a>
       </li>
     </ul>
     <div class="nav-item active" *ngIf="loggedUser">

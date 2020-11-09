@@ -1,4 +1,4 @@
-import {Component, Input, OnDestroy, OnInit, Output} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {AuthService} from '../../services/auth.service';
 import {User} from '../../models/user/user.model';
@@ -25,7 +25,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
 
   }
 
@@ -33,7 +33,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  logout() {
-    this.authService.logout().then(value => this.router.navigate(['/login']));
+  logout(): void {
+    this.authService.logout();
   }
 }

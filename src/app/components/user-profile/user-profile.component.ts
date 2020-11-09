@@ -24,17 +24,19 @@ export class UserProfileComponent implements OnInit {
     private router: Router
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.authService.refreshUserMemberRooms();
     this.authService.refreshUserCreatedRooms();
     this.loggedUser = this.authService.getUser();
   }
 
-  addNewRoomMember() {
+  addNewRoomMember(): void {
     this.chatRoomService.addNewMember(this.chatRoomId, this.addNewUserName);
+    this.chatRoomId = null;
+    this.addNewUserName = '';
   }
 
-  loginChatRoom(loginChatRoomFromHtml: ChatRoom) {
+  loginChatRoom(loginChatRoomFromHtml: ChatRoom): void {
     this.chatRoomLoginService.setChatRoomLogin(loginChatRoomFromHtml);
     this.router.navigate(['/chat', loginChatRoomFromHtml.chatRoomName]);
   }

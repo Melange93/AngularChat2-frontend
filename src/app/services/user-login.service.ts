@@ -10,7 +10,7 @@ export class UserLoginService {
 
   constructor() { }
 
-  public userLoginChanged(val: User) {
+  public userLoginChanged(val: User): void {
     this.userLoginEvents.emit(val);
   }
 }

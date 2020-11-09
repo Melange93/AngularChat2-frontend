@@ -5,7 +5,7 @@ export class ChatMessage {
   user: User;
   message: string;
   timeStamp: Date;
-  chatRoom: ChatRoom
+  chatRoom: ChatRoom;
 
 
   constructor(user: User, message: string, timeStamp: Date, chatRoom: ChatRoom) {

@@ -1,7 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../services/auth.service';
-import {Route, Router} from '@angular/router';
-import {ChatRoom} from '../../models/chatroom.model';
 
 @Component({
   selector: 'app-sign-up',
@@ -15,15 +13,14 @@ export class SignUpComponent implements OnInit {
   private password: string;
 
   constructor(
-    private authService: AuthService,
-    private router: Router
+    private authService: AuthService
   ) {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
   }
 
-  singUp() {
+  singUp(): void {
     const user = {
       id: null,
       email: this.email,
@@ -33,6 +30,12 @@ export class SignUpComponent implements OnInit {
       member: null
     };
 
-    this.authService.signUp(user).then(value => this.router.navigate(['/login']));
+
+    if (user.userName.trim() === '' || user.email.trim() === '' || user.password.trim() === '') {
+      alert('Please fill every field correctly.');
+      return;
+    }
+
+    this.authService.signUp(user);
   }
 }

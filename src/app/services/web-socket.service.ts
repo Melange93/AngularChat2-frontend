@@ -20,7 +20,7 @@ export class WebSocketService {
     this.webSocket = new WebSocket(this.webSocketUrl + '/chat/' + this.chatRoomName);
   }
 
-  openWebSocket() {
+  openWebSocket(): void {
     this.webSocket.onopen = (event) => {
       console.log('Open: ', event);
     };
@@ -35,11 +35,11 @@ export class WebSocketService {
     };
   }
 
-  sendMessage(chatMessage: ChatMessage) {
+  sendMessage(chatMessage: ChatMessage): void {
     this.webSocket.send(JSON.stringify(chatMessage));
   }
 
-  closeWebSocket() {
+  closeWebSocket(): void {
     this.webSocket.close();
   }
 }

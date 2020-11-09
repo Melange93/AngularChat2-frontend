@@ -11,7 +11,7 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
-import { ChatroomcrationformComponent } from './components/chatroomcrationform/chatroomcrationform.component';
+import { ChatroomcreationformComponent } from './components/chatroomcreationform/chatroomcreationform.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +21,7 @@ import { ChatroomcrationformComponent } from './components/chatroomcrationform/c
     NavbarComponent,
     ChatComponent,
     UserProfileComponent,
-    ChatroomcrationformComponent
+    ChatroomcreationformComponent
   ],
   imports: [
     BrowserModule,

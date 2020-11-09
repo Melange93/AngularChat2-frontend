@@ -4,7 +4,7 @@
     <h1 class="h3 mb-3 font-weight-normal">Blue Cat Chat</h1>
   </div>
   <div class="form-label-group">
-    <label for="user-name-login">User name</label>
+    <label for="user-name-login">Username</label>
     <input type="text" id="user-name-login" name="user-name-login" [(ngModel)]="userName" class="form-control"
            placeholder="User name" required autofocus>
   </div>
@@ -15,7 +15,7 @@
            placeholder="Password" required>
   </div>
   <div class="form-label-group">
-    <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="login()" (keydown.enter)="login()">Log in
+    <button class="btn btn-lg btn-info btn-block" type="submit" (click)="login()" (keydown.enter)="login()">Log in
     </button>
   </div>
 </form>
