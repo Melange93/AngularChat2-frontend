@@ -26,7 +26,12 @@ export class LoginComponent implements OnInit {
       password: this.password
     };
 
-    this.authService.login(userCredentials).then(value => this.router.navigate(['profile']));
+    if (userCredentials.userName.trim() === '' || userCredentials.password.trim() === '') {
+      alert('Please fill every field correctly.');
+      return;
+    }
+
+    this.authService.login(userCredentials);
   }
 
 }
