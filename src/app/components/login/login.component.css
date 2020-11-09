@@ -8,22 +8,3 @@
 .form-label-group {
   padding: 10px;
 }
-
-button {
-  padding: 10px;
-  background-color: #76c1c1;
-  border-color: #6db8b8;
-  color: black;
-}
-
-button:hover {
-  background-color: #6db8b8;
-  border-color: #65a5a5;
-  color: black;
-}
-
-button:active {
-  background-color: #65a5a5;
-  border-color: #588f8f;
-  color: black;
-}
